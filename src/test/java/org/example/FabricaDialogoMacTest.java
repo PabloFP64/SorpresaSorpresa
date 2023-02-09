@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,6 +15,10 @@ class FabricaDialogoMacTest {
 
     @InjectMocks
     private FabricaDialogoMac underTest;
+
+    @Test
+    void crearDialogo() {
+    }
 
     @Nested
     class WhenCrearingDialogo {
