@@ -1,57 +1,19 @@
 package org.example;
 
-interface Dialogo {
-    void render();
-}
+import java.util.Scanner;
 
-class DialogoWindows implements Dialogo {
-    @Override
-    public void render() {
-        System.out.println("Rendering del diálogo de Windows");
-    }
-}
-
-class DialogoMac implements Dialogo {
-    @Override
-    public void render() {
-        System.out.println("Rendering del diálogo de Mac");
-    }
-}
-
-interface FabricaDialogo {
-    Dialogo crearDialogo();
-}
-
-class FabricaDialogoWindows implements FabricaDialogo {
-    @Override
-    public Dialogo crearDialogo() {
-        return new DialogoWindows();
-    }
-}
-
-class FabricaDialogoMac implements FabricaDialogo {
-    @Override
-    public Dialogo crearDialogo() {
-        return new DialogoMac();
-    }
-}
-
-class Cliente {
-    private Dialogo dialogo;
-
-    public Cliente(FabricaDialogo fabrica) {
-        dialogo = fabrica.crearDialogo();
-    }
-
-    public void render() {
-        dialogo.render();
-    }
-}
-
-class Main {
+public class Main {
     public static void main(String[] args) {
-        FabricaDialogo fabrica = new FabricaDialogoWindows();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Seleccione el sistema operativo: 1. Windows 2. Mac");
+        int opcion = scan.nextInt();
+        FabricaDialogo fabrica;
+        if (opcion == 1) {
+            fabrica = new FabricaDialogoWindows();
+        } else {
+            fabrica = new FabricaDialogoMac();
+        }
         Cliente cliente = new Cliente(fabrica);
-        cliente.render();
+        cliente.mostrarMensaje();
     }
 }
