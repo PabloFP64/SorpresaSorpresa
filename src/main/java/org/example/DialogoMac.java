@@ -3,7 +3,7 @@ package org.example;
 class DialogoMac implements Dialogo {
     @Override
     public void mostrarMensaje() {
-        System.out.println("Mostrando mensaje en ventana de Mac");
+        System.out.println("Error, estas en un Windows, intentalo de nuevo");
     }
 
     @Override
