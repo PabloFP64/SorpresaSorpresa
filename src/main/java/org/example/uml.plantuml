@@ -1,0 +1,40 @@
+@startuml
+interface Dialogo {
+   void render();
+}
+
+class DialogoWindows implements Dialogo {
+   +void render()
+}
+
+class DialogoMac implements Dialogo {
+   +void render()
+}
+
+interface FabricaDialogo {
+   Dialogo crearDialogo();
+}
+
+class FabricaDialogoWindows implements FabricaDialogo {
+   +Dialogo crearDialogo()
+}
+
+class FabricaDialogoMac implements FabricaDialogo {
+   +Dialogo crearDialogo()
+}
+
+class Cliente {
+   -Dialogo dialogo
+   +Cliente(FabricaDialogo)
+   +void render()
+}
+
+class Main {
+   +static void main(String[])
+}
+
+Cliente -> Dialogo
+Cliente -> FabricaDialogo
+FabricaDialogoWindows -> DialogoWindows
+FabricaDialogoMac -> DialogoMac
+@enduml
